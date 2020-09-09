@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/posts/{post}', function ($post) {
+/*Route::get('/posts/{post}', function ($post) {
     $posts = [
         'my-first-post' => 'Hello, this is my first blog post!',
         'my-second-post' => 'This is my second post :).'
@@ -26,4 +26,6 @@ Route::get('/posts/{post}', function ($post) {
     return view('post', [
         'post' => $posts[$post] 
     ]);
-});
+});*/
+
+Route::get('/posts/{post}', 'PostsController@show');
