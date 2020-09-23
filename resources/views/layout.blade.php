@@ -6,6 +6,8 @@
 
         <title>HBKFit</title>
 
+        <div class="background-img" style="background-image: url('https://img4.goodfon.com/original/1920x1080/d/5a/bodybuilding-bodibilder-weight-training-muscles-bodybuilder.jpg')">;
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -18,6 +20,15 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+            }
+
+            .background-img {
+                width: 100%;
+                height: auto;
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
             }
 
             .full-height {
