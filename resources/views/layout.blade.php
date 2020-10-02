@@ -4,8 +4,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>HBKFit</title>
-
         <div class="background-img" style="background-image: url('https://img4.goodfon.com/original/1920x1080/d/5a/bodybuilding-bodibilder-weight-training-muscles-bodybuilder.jpg')">;
 
         <!-- Fonts -->
@@ -14,7 +12,6 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -51,27 +48,56 @@
                 top: 18px;
             }
 
-            .content {
+            .title {
+                font-size: 50px;
                 text-align: center;
             }
 
-            .title {
-                font-size: 84px;
-            }
+            .active {
+      display: block;
+    }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+            .menu {
+    position: fixed; 
+    width: 14%;
+    z-index: 1; 
+    top: 2%;
+}
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
+  .menu-list1 {
+    position: fixed; 
+    width: 12%;
+    z-index: 1; 
+    top: 80%;
+  }
+
+#menu-list {
+    background-color: rgba(120, 180, 0, 0.8);
+    border-radius: 15px;
+    font-size: 16px; 
+    padding: 0;
+    text-align: justify;
+}
+
+#menu-list > li {
+    display: block;
+}
+
+
+#menu-list > li > a {
+    font-family: 'Raleway', sans-serif; 
+    padding: 10px 0 10px 30px; 
+    text-decoration: none; 
+    display: block;
+    color: #fff; 
+}
+
+#menu-list > .active > a,
+#menu-list > li > a:hover { 
+    background-color: rgba(255,255,255,0.25);
+    border-radius: 15px;
+}
+
         </style>
     </head>
     <body>

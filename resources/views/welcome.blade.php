@@ -15,22 +15,32 @@
                     @endauth
                 </div>
             @endif
+</div>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    HBKFit
-                </div>
+            <div class="menu visible-md visible-lg">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul id="menu-list">
+                            <li class="active"><a href="http://127.0.0.1:8000/forum">Forum</a></li>
+                            <li class=""><a href="http://127.0.0.1:8000/contact">Contact</a></li>
+                        </ul>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
+       <!--     @if (Route::has('login'))
+                <ul id="menu-list" class="menu-list1">
+            @auth
+                <li><a href="{{ url('/home') }}">Home</a></li>
+            @else
+                <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+            @if (Route::has('register'))
+                <li><a href="{{ route('register') }}"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
+            @endif
+            @endauth
+                </ul>
+            @endif
+
+            -->
 @endsection
