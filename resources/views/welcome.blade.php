@@ -30,7 +30,7 @@
         @endif
       @endauth
       </ul>
-      <ul id="menu-list" class="menu-list1">
+      <ul id="menu-list">
         <li><a href="http://127.0.0.1:8000/admin">Admin</a></li>
       </ul>
       @endif

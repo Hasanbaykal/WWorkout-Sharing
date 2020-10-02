@@ -48,15 +48,8 @@
             top: 2%;
         }
 
-        .menu-list1 {
-            position: fixed; 
-            width: 12%;
-            z-index: 1; 
-            top: 80%;
-        }
-
         #menu-list {
-            background-color: rgba(140, 114, 114, 0.2);
+            background-color: rgba(255,255,255,0.25);
             border-radius: 15px;
             font-size: 16px; 
             padding: 0;
@@ -73,7 +66,7 @@
             padding: 10px 0 10px 30px; 
             text-decoration: none; 
             display: block;
-            color: #fff; 
+            color: rgba(0,0,0,1);
         }
 
         #menu-list > .active > a,
