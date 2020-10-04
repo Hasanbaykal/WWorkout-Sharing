@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Admin;
+use Illuminate\Support\Facades\Auth;
 
 class AdminLoginController extends Controller
 {
@@ -16,5 +16,29 @@ class AdminLoginController extends Controller
     public function showLoginForm()
     {
         return view('auth.admin-login');
+    }
+
+    public function login (Request $request)
+    {
+        // Validate form data
+        $this->validate($request, 
+            [
+                'email' => 'required|string|email',
+                'password' => 'required|string|min:8'
+            ]
+        );
+
+        // Attempt to login as admin
+        if (Auth::guard('admin')->attempt([
+            'email' => $request->email, 
+            'password' => $request->password], 
+            $request->remember)) {
+                // If successful then redirect to intended route or admin dashboard
+                return redirect()->intended(route('admin.dashboard'));
+                    }
+
+        // If login not successful then redirect back to login page
+        return redirect()->back()->withInput($request->only('email', 'remember'));
+
     }
 }

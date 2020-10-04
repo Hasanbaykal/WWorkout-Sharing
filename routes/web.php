@@ -28,9 +28,11 @@ use Illuminate\Support\Facades\Route;
     ]);
 });*/
 
-Route::view('/', 'welcome');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/posts/{post}', 'PostsController@show');
+/*Route::get('/posts/{post}', 'PostsController@show');*/
 
 Auth::routes();
 
