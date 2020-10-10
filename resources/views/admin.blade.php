@@ -25,64 +25,66 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"  />
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
-<!-- LIST of User Profiles -->
 <br>
 <br>
-<div class=col-md-12>
-    
-    <form id="form-list-client">
-            <legend>List of User Profiles</legend>
-    
-    <div class="pull-right">
-        <a class="btn btn-default-btn-xs btn-primary"><i class="glyphicon glyphicon-refresh"></i> Refresh</a>
-        <a class="btn btn-default-btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> New</a>
+<br>
+
+<div class="container">
+        <legend>List of User Profiles</legend>
+
+        <div class="pull-right">
+        <a class="btn btn-default-btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> Add New User</a>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+               <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+               </tr> 
+            </thead>
+            <tbody>
+               @foreach($users as $user)
+                  <tr>
+                     <td>{{ $user->name }}</td>
+                     <td>{{ $user->email }}</td>
+                     <td>
+                        <input data-id="{{$user->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $user->status ? 'checked' : '' }}>
+                     </td>
+                     <td>
+                        <a title="View User Profile" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-eye-open text-primary"></i> </a>
+                        <a title="Edit User Profile" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-edit text-primary"></i> </a>
+                        <a title="Delete User Profile" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-trash text-danger"></i> </a>
+                    </td>
+                  </tr>
+               @endforeach
+            </tbody>
+        </table>
     </div>
-    <table class="table table-bordered table-condensed table-hover">
-        <thead>
-            <tr>
-                <td>Name</td>
-                <th>Email</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-                
-        </thead>
-        <tbody id="form-list-client-body">
-            <tr>
-                <td>x</td>
-                <td>x</td>
-                <td>Active/Inactive </td>
-                <td>
-                    <a title="view this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-eye-open text-primary"></i> </a>
-                    <a title="edit this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-edit text-primary"></i> </a>
-                    <a title="delete this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-trash text-danger"></i> </a>
-                   
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    </form>
 
-    
-</div>
-
-<!-- Profile Active/Inactive Button Switch -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="client-status">Client status</label>
-  <div class="col-md-4">
-  <div class="radio">
-    <label for="client-status-0">
-      <input type="radio" name="client-status" id="client-status-0" value="active" checked="checked">
-      Active
-    </label>
-	</div>
-  <div class="radio">
-    <label for="client-status-1">
-      <input type="radio" name="client-status" id="client-status-1" value="inactive">
-      Inactive
-    </label>
-	</div>
-  </div>
-</div>
+    <script>
+  $(function() {
+    $('.toggle-class').change(function() {
+        var status = $(this).prop('checked') == true ? 1 : 0; 
+        var user_id = $(this).data('id'); 
+         
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: '/admin/changeStatus',
+            data: {'status': status, 'user_id': user_id},
+            success: function(data){
+              console.log(data.success)
+            }
+        });
+    })
+  })
+</script>
 @endsection

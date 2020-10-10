@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use Illuminate\Http\Request;
+
 
 class AdminController extends Controller
 {
@@ -23,6 +24,17 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        $users = User::get();
+        return view('admin', compact('users'));
     }
+
+    public function changeStatus(Request $request)
+    {
+        $user = User::find($request->user_id);
+        $user->status = $request->status;
+        $user->save();
+  
+        return response()->json(['success'=>'Status change successfully.']);
+    }
+    
 }

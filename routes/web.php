@@ -39,9 +39,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
+// Routes for Getting User Listing and for Saving Data of User Toggle Switch
+
+
+// Admin Routes
 Route::prefix('admin')->group(function () {
     // Dashboard route
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/changeStatus', 'AdminController@changeStatus')->name('admin.dashboard');
 
     // Login routes
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
