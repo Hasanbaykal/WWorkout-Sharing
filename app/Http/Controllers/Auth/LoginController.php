@@ -45,4 +45,10 @@ class LoginController extends Controller
         Auth::guard('web')->logout();
         return redirect('/');
     }
+
+    protected function credentials(\Illuminate\Http\Request $request)
+    {
+        //return $request->only($this->username(), 'password');
+        return ['email' => $request->{$this->username()}, 'password' => $request->password, 'status' => 1];
+    }
 }

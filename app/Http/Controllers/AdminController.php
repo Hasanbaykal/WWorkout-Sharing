@@ -22,19 +22,24 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function index()
     {
         $users = User::get();
         return view('admin', compact('users'));
     }
-
+  
+    /**
+     * Responds with a welcome message with instructions
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function changeStatus(Request $request)
     {
-        $user = User::find($request->user_id);
+        $user = User::find($request->id);
         $user->status = $request->status;
         $user->save();
   
         return response()->json(['success'=>'Status change successfully.']);
     }
-    
 }
