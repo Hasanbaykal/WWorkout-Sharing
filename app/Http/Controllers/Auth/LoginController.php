@@ -46,9 +46,13 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-    protected function credentials(\Illuminate\Http\Request $request)
+   
+
+    protected function validateLogin(Request $request)
     {
-        //return $request->only($this->username(), 'password');
-        return ['email' => $request->{$this->username()}, 'password' => $request->password, 'status' => 1];
+        $this->validate($request, [
+            $this->username() => 'exists:users,' . $this->username() . ',status,1',
+            'password' => 'required|string',], [
+                $this->username() . '.exists' => 'Your account has been disabled.']);
     }
 }
