@@ -95,36 +95,42 @@
         </nav>
 
         <main class="py-4">
-        <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header bg-primary text-light">{{ __('Admin Dashboard') }}</div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card h2 text-center">
+                            <div class="card-header bg-primary text-light">{{ __('Admin Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                                <div class="card-body">
+                                    @if (session('status'))
+                                        <div class="alert alert-success" role="alert">
+                                        {{ session('status') }}
+                                </div>
+                                    @endif
+
+                                    {{ __('You are logged in!') }}
+                            </div>
                         </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
         </main>
     </div>
 
+<br>
+<br>
+<br>
 <div class="container">
-        <legend>List of User Profiles</legend>
+        <h1>List of User Profiles</h1>
 
         <div class="pull-right">
-        <a class="btn btn-default-btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> Add New User</a>
+        <a class="btn btn-default-btn-xs btn-lg btn-primary"><i class="glyphicon glyphicon-plus"></i> Add New User</a>
         </div>
+
+        <br>
+        <br>
         <div id="message"></div>
-        <table class="table table-bordered">
+        <table class="table table-bordered h2">
             <thead>
                <tr>
                   <th>Name</th>
@@ -146,9 +152,9 @@
                             onclick="changeStatus(event.target, {{ $user->id }});">
                      </td>
                      <td>
-                        <a title="View User Profile" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-eye-open text-primary"></i> </a>
-                        <a title="Edit User Profile" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-edit text-primary"></i> </a>
-                        <a title="Delete User Profile" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-trash text-danger"></i> </a>
+                        <a title="View User Profile" class="btn btn-default btn-lg "> <i class="glyphicon glyphicon-eye-open text-primary"></i> </a>
+                        <a title="Edit User Profile" class="btn btn-default btn-lg "> <i class="glyphicon glyphicon-edit text-primary"></i> </a>
+                        <a title="Delete User Profile" class="btn btn-default btn-lg "> <i class="glyphicon glyphicon-trash text-danger"></i> </a>
                     </td>
                   </tr>
                @endforeach
@@ -174,9 +180,9 @@ function changeStatus(_this, id) {
         },
         success: function(data){
             if (data.type == "error") {
-                $('#message').html("<div class='alert alert-danger'>"+data.fail+"</div>");} 
+                $('#message').html("<div class='alert alert-danger card h2'>"+data.fail+"</div>");} 
                 else {
-                    $('#message').html("<div class='alert alert-success'>"+data.success+"</div>");
+                    $('#message').html("<div class='alert alert-success card h2'>"+data.success+"</div>");
 }}
     });
 }
