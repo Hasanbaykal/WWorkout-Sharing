@@ -147,17 +147,15 @@
                      <td>
                      <label class="switch">
                         <input id="{{$user->id}}" type="checkbox"
-                                class="{{ ($user->status == 1 ? 'active' : '' ) }}"
                                 {{ $user->status ? 'checked' : '' }}
-                                onclick="changeStatus(event.target, {{ $user->id }});"
-                                >
+                                onclick="changeStatus(event.target, {{ $user->id }});">
                                 <span class="slider round"></span>
                     </label>
                         <style>
                         .switch {
                             position: relative;
                             display: inline-block;
-                            width: 60px;
+                            width: 110px;
                             height: 34px;
                             }
 
@@ -210,8 +208,26 @@
                                 }
 
                             .slider.round:before {
-                            border-radius: 50%;
+                                border-radius: 50%;
                                 }
+
+                                /*------ ADDED CSS ---------*/
+                            .slider:after {
+                                content:'Inactive';
+                                color: black;
+                                display: block;
+                                position: absolute;
+                                transform: translate(-50%,-50%);
+                                top: 50%;
+                                left: 75%;
+                                font-size: 13px;
+                                
+                                        }
+
+                            input:checked + .slider:after {  
+                                content:'Active';
+                                color: white;
+                                        }
                        
                         </style>   
                      </td>
