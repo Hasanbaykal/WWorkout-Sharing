@@ -39,6 +39,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
+Route::get('/user/{id}', 'UserController@profile')->name('user.profile');
+
 // Admin Routes
 Route::prefix('admin')->group(function () {
     // Dashboard route
