@@ -36,10 +36,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
-Route::get('/user/{id}', 'UserController@profile')->name('user.profile');
+Route::get('/', 'PostsController@index');
+Route::get('/p/create', 'PostsController@create');
+Route::post('/p', 'PostsController@store');
+Route::get('/p/{post}', 'PostsController@show');
+
+Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
+Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
+Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
 
 // Admin Routes
 Route::prefix('admin')->group(function () {
