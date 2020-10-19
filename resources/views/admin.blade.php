@@ -123,10 +123,6 @@
 <div class="container">
         <h1>List of User Profiles</h1>
 
-        <div class="pull-right">
-        <a class="btn btn-default-btn-xs btn-lg btn-primary"><i class="glyphicon glyphicon-plus"></i> Add New User</a>
-        </div>
-
         <br>
         <br>
         <div id="message"></div>
@@ -136,7 +132,6 @@
                   <th>Name</th>
                   <th>Email</th>
                   <th>Status</th>
-                  <th>Actions</th>
                </tr> 
             </thead>
             <tbody>
@@ -231,11 +226,6 @@
                        
                         </style>   
                      </td>
-                     <td>
-                        <a title="View User Profile" class="btn btn-default btn-lg "> <i class="glyphicon glyphicon-eye-open text-primary"></i> </a>
-                        <a title="Edit User Profile" class="btn btn-default btn-lg "> <i class="glyphicon glyphicon-edit text-primary"></i> </a>
-                        <a title="Delete User Profile" class="btn btn-default btn-lg "> <i class="glyphicon glyphicon-trash text-danger"></i> </a>
-                    </td>
                   </tr>
                @endforeach
             </tbody>
