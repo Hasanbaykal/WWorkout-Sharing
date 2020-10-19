@@ -29,8 +29,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand md-8" href="{{ url('/') }}">
+                <p class="adminnavhomepagebutton">Homepage</p>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -43,7 +43,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto adminnavright">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -61,7 +61,7 @@
                                 </a>
 
                                 @if(\Illuminate\Support\Facades\Auth::guard('admin')->check())
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-menu dropdown-menu-right adminnavlogout" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('admin-logout-form').submit();">
@@ -147,6 +147,18 @@
                                 <span class="slider round"></span>
                     </label>
                         <style>
+
+                        .adminnavhomepagebutton {
+                            font-size: 20px;
+                        }
+
+                        .adminnavright {
+                            font-size: 15px;
+                        }
+
+                        .adminnavlogout {
+                            font-size: 13px;
+                        }
                         .switch {
                             position: relative;
                             display: inline-block;

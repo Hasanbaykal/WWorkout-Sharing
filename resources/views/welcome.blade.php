@@ -22,7 +22,7 @@
       @if (Route::has('login'))
       <ul id="menu-list">
       @auth
-      <li><a href="{{ url('/welcome') }}">Dashboard</a></li>
+      <li><a href="{{ url('/home') }}">Dashboard</a></li>
       @else
         <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
         @if (Route::has('register'))

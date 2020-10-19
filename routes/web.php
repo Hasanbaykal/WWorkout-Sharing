@@ -13,32 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/posts/{post}', function ($post) {
-    $posts = [
-        'my-first-post' => 'Hello, this is my first blog post!',
-        'my-second-post' => 'This is my second post :).'
-    ];
-
-    if (! array_key_exists($post, $posts)) {
-        abort(404, 'Sorry, that post was not found.');
-    }
-
-    return view('post', [
-        'post' => $posts[$post] 
-    ]);
-});*/
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-/*Route::get('/posts/{post}', 'PostsController@show');*/
-
 Auth::routes();
 
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+Route::get('/home', 'HomeController@index');
 
-Route::get('/', 'PostsController@index');
+Route::get('/p', 'PostsController@index');
 Route::get('/p/create', 'PostsController@create');
 Route::post('/p', 'PostsController@store');
 Route::get('/p/{post}', 'PostsController@show');
