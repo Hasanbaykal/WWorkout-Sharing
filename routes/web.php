@@ -24,6 +24,11 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('/thread', 'ThreadController');
 
+Route::get('/threads', function() {
+    $threads=App\Thread::paginate(15);
+    return view('thread.index', compact('threads'));
+});
+
 // Admin Routes
 Route::prefix('admin')->group(function () {
     // Dashboard route

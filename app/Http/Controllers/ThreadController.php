@@ -25,7 +25,7 @@ class ThreadController extends Controller
      */
     public function create()
     {
-        //
+        return view('thread.create');
     }
 
     /**
@@ -36,7 +36,19 @@ class ThreadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate
+        $this->validate($request, [
+            'subject' => 'required|min:5',
+            'type'    => 'required',
+            'thread'  => 'required|min:10',
+            //'g-recaptcha-response' => 'required|captcha'
+        ]);
+
+        //store
+        Thread::create($request->all());
+
+        //redirect
+        return redirect()->back()->with('message', 'Threat Created');
     }
 
     /**
@@ -47,7 +59,7 @@ class ThreadController extends Controller
      */
     public function show(Thread $thread)
     {
-        //
+        return view('thread.single', compact('thread'));
     }
 
     /**
