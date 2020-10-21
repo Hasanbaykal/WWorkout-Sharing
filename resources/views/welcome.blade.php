@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul id="menu-list">
         <li class="active"><a href="http://127.0.0.1:8000/">Home</a></li>
-        <li class=""><a href="http://127.0.0.1:8000/forum">Forum</a></li>
+        <li class=""><a href="http://127.0.0.1:8000/thread">Threads</a></li>
         <li class=""><a href="http://127.0.0.1:8000/contact">Contact</a></li>
       </ul>
       @if (Route::has('login'))

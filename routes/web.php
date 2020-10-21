@@ -22,14 +22,7 @@ Auth::routes();
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 Route::get('/home', 'HomeController@index');
 
-Route::get('/p', 'PostsController@index');
-Route::get('/p/create', 'PostsController@create');
-Route::post('/p', 'PostsController@store');
-Route::get('/p/{post}', 'PostsController@show');
-
-Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
-Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
-Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
+Route::resource('/thread', 'ThreadController');
 
 // Admin Routes
 Route::prefix('admin')->group(function () {
