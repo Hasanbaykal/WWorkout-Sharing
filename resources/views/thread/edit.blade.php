@@ -31,26 +31,27 @@
             </div>
             <div class="form">
         <div class=" well">
-            <form class="form-vertical" action="{{route('thread.store')}}" method="post" role="form"
+            <form class="form-vertical" action="{{route('thread.update', $thread->id)}}" method="post" role="form"
                   id="create-thread-form">
                 {{csrf_field()}}
+                {{method_field('put')}}
                 <div class="form-group">
                     <label for="subject">Subject</label>
                     <input type="text" class="form-control" name="subject" id="" placeholder="Input..."
-                           value="{{old('subject')}}">
+                           value="{{$thread->subject}}">
                 </div>
 
                 <div class="form-group">
                     <label for="subject">Type</label>
                     <input type="text" class="form-control" name="type" id="" placeholder="Input..."
-                           value="{{old('type')}}">
+                           value="{{$thread->type}}">
                 </div>
 
                 <div class="form-group">
                     <label for="subject">Thread</label>
-                    <textarea class="form-control threadtextbox" name="thread" id="" placeholder="Input..." value="{{old('thread')}}"></textarea>
+                    <textarea class="form-control" name="thread" id="" placeholder="Input...">"{{$thread->thread}}"</textarea>
                 </div>
-    
+
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
@@ -105,5 +106,7 @@
   padding: 20px;
   margin-left: 20%;
 }
+
+
 
 </style>
