@@ -5,12 +5,6 @@
 <div class="container categorycont">
 
         <div class="row">
-        <div class="col-md-9 createthread">
-                    <div class="row">      
-                        <div class="col-md-offset-6 col-md-2">
-                            <a class="btn btn-primary" href="{{route('thread.create')}}">Create Thread</a></div>
-                    </div>
-                </div>
             {{--//category section--}}
             <div class="col-md-3">
                 <ul class="list-group">
@@ -95,18 +89,11 @@
     margin-top: 100px;
 }
 
-.createthread {
-    margin-top: 1%;
-    margin-left: 87%;
-}
-
 .well {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
   margin-left: 20%;
 }
-
-
 
 </style>

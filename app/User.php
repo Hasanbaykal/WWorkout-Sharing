@@ -48,13 +48,8 @@ class User extends Authenticatable
         });
     }
 
-    public function posts()
+    public function threads()
     {
-        return $this->hasMany(Post::class)->orderBy('created_at', 'DESC');
-    }
-    
-    public function profile()
-    {
-        return $this->hasOne(Profile::class);
+        return $this->hasMany(Thread::class);
     }
 }

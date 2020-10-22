@@ -48,7 +48,7 @@
 
                 <div class="form-group">
                     <label for="subject">Thread</label>
-                    <textarea class="form-control threadtextbox" name="thread" id="" placeholder="Input..." value="{{old('thread')}}"></textarea>
+                    <textarea class="form-control threadtextbox" name="thread" id="" placeholder="Input...">{{old('thread')}}</textarea>
                 </div>
     
                 <button type="submit" class="btn btn-primary">Submit</button>

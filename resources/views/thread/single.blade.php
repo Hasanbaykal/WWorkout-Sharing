@@ -11,12 +11,6 @@
             </div>
         </div>
         <div class="row">
-        <div class="col-md-9 createthread">
-                    <div class="row">      
-                        <div class="col-md-offset-6 col-md-2">
-                            <a class="btn btn-primary" href="{{route('thread.create')}}">Create Thread</a></div>
-                    </div>
-                </div>
             {{--//category section--}}
             <div class="col-md-3">
                 <ul class="list-group">
@@ -45,6 +39,8 @@
 
             <br>
 
+@if(auth()->user()->id == $thread->user_id)
+
             <div class="actions">
                 <a href="{{route('thread.edit', $thread->id)}}" class="btn btn-info btn-xs">Edit</a>
 
@@ -54,6 +50,7 @@
                     <input class="btn btn-xs btn-danger" type="submit" value="Delete">
                 </form>
             </div>
+@endif
         </div>
     </div>
 </div>
@@ -81,11 +78,6 @@
 
 .categorycont {
     margin-top: 100px;
-}
-
-.createthread {
-    margin-top: 1%;
-    margin-left: 87%;
 }
 
 </style>
