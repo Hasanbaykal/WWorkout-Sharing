@@ -51,6 +51,81 @@
                 </form>
             </div>
 @endif
+
+
+<br><br><br>
+
+
+            <div class="comment-list">
+                @foreach($thread->comments as $comment)
+
+                    <h4>{{$comment->body}}</h4>
+                    <lead>{{$comment->user->name}}</lead>
+
+                    <div class="actions">
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Edit Comment
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <form action="{{route('comment.update',$comment->id)}}" method="post" role="form">
+                                                {{csrf_field()}}
+                                                {{method_field('put')}}
+                            
+                            <div class="modal-body">
+                                <h4>Edit Comment</h4>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="body" id="" placeholder="Input..." value="{{$comment->body}}">
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Post Comment</button>
+                                    </div>
+                            </form>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+
+                        <form action="{{route('comment.destroy', $comment->id)}}" method="POST" class="inline-it">
+                            {{csrf_field()}}
+                            {{method_field('DELETE')}}
+                            <input class="btn btn-xs btn-danger" type="submit" value="Delete Comment">
+                        </form>
+                    </div>
+
+                @endforeach
+            </div>
+            <br><br>
+            <div class="comment-form">
+
+                <form action="{{route('threadcomment.store',$thread->id)}}" method="post" role="form">
+                    {{csrf_field()}}
+                    <h4>Create Comment</h4>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" name="body" id="" placeholder="Input...">
+                </div>
+
+                    <button type="submit" class="btn btn-primary">Post Comment</button>
+                </form>
+                
+            </div>
+
         </div>
     </div>
 </div>
@@ -59,6 +134,7 @@
     
 
 @endsection
+
 
 <style>
 

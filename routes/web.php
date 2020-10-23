@@ -22,12 +22,17 @@ Auth::routes();
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 Route::get('/home', 'HomeController@index');
 
-Route::resource('/thread', 'ThreadController');
+// Thread Routes
+    Route::get('/threads', function() {
+        $threads=App\Thread::paginate(15);
+        return view('thread.index', compact('threads'));
+    });
 
-Route::get('/threads', function() {
-    $threads=App\Thread::paginate(15);
-    return view('thread.index', compact('threads'));
-});
+    Route::resource('/thread', 'ThreadController');
+
+// Comment Routes
+    Route::resource('comment', 'CommentController',['only'=>['update','destroy']]);
+    Route::post('comment/create/{thread}','CommentController@addThreadComment')->name('threadcomment.store');
 
 // Admin Routes
 Route::prefix('admin')->group(function () {
