@@ -29,17 +29,18 @@
                     </a>
                 </ul>
             </div>
-                <div class="col-md-9">
-                <h4>{{$thread->subject}}</h4>
-            <hr>
 
-            <div class="thread-details">
-                {{$thread->thread}}
-            </div>
+            <div class="col-md-9">
+                <h4>{{$thread->subject}}</h4>
+                <hr><div>
+
+                <div class="thread-details">
+                    {{$thread->thread}}
+                </div>
 
             <br>
 
-@if(auth()->user()->id == $thread->user_id)
+@can('update',$thread)
 
             <div class="actions">
                 <a href="{{route('thread.edit', $thread->id)}}" class="btn btn-info btn-xs">Edit</a>
@@ -50,7 +51,7 @@
                     <input class="btn btn-xs btn-danger" type="submit" value="Delete">
                 </form>
             </div>
-@endif
+@endcan
 
 
 <br><br><br>
@@ -74,7 +75,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Comment</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -85,7 +86,7 @@
                                                 {{method_field('put')}}
                             
                             <div class="modal-body">
-                                <h4>Edit Comment</h4>
+                            
 
                                     <div class="form-group">
                                         <input type="text" class="form-control" name="body" id="" placeholder="Input..." value="{{$comment->body}}">
@@ -129,9 +130,6 @@
         </div>
     </div>
 </div>
-
-
-    
 
 @endsection
 
