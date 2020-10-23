@@ -80,6 +80,10 @@
                                             {{ __('Logout') }}
                                         </a>
 
+                                        <a class="dropdown-item" href="{{ route('user_profile',auth()->user()) }}">
+                                            My Profile
+                                        </a>
+
                                         <form id="user-logout-form" action="{{ route('user.logout') }}" method="POST"
                                               style="display: none;">
                                             @csrf

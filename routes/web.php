@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+Route::get('/user/profile/{user}', 'UserProfileController@index')->name('user_profile')->middleware('auth');
 Route::get('/home', 'HomeController@index');
 
 // Thread Routes

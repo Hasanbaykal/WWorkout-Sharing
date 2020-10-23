@@ -37,15 +37,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected static function boot()
+    public function getRouteKeyName()
     {
-        parent::boot();
-
-        static::created(function ($user) {
-            $user->profile()->create([
-                'title' => $user->name,
-            ]);
-        });
+        return 'name';
     }
 
     public function threads()
