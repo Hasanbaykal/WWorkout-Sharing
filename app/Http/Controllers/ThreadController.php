@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Thread;
 use Illuminate\Http\Request;
 
@@ -16,9 +17,14 @@ class ThreadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->has('categories')) {
+            $category=Category::find($request->categories);
+            $threads=$category->threads;
+        }else {
         $threads= Thread::paginate(15);
+        }
         return view('thread.index',compact('threads'));
     }
 
@@ -50,6 +56,8 @@ class ThreadController extends Controller
 
         //store
         $thread = auth()->user()->threads()->create($request->all());
+
+        $thread->categories()->attach($request->categories);
 
         //redirect
         return redirect()->back()->with('message', 'Threat Created');

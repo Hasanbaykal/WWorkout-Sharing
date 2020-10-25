@@ -21,15 +21,17 @@
                             <a class="btn btn-primary" href="{{route('thread.create')}}">Create Thread</a></div>
                     </div>
                 </div>
+
                 {{--//category section--}}
             <div class="box col-md-3">
             <div class="list-group">
-            <a class="categorytitle">Tags</a>
+            <a class="categorytitle">Categories</a>
                 <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-                    <option value="">Select Tag:</option>
-                    <option value="{{route('thread.index')}}"><span class="badge">14</span>All Threads</option>
-                    <option value="" class="list-group-item"><span class="badge">2</span>PHP</option>
-                    <option value="" class="list-group-item"><span class="badge">1</span>Python</option>
+                <option value="">Select:</option>
+                    <option value="{{route('thread.index')}}">All Threads</option>
+                @foreach($categories as $category)
+                    <option value="{{route('thread.index',['categories'=>$category->id])}}">{{$category->name}}</option>
+                @endforeach
                 </select>
                 </div>
                 </div><br>

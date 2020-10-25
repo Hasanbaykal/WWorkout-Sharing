@@ -5,15 +5,16 @@
 <div class="container categorycont">
 
         <div class="row">
-        {{--//category section--}}
+        {{{--//category section--}}
             <div class="box col-md-3">
             <div class="list-group">
-            <a class="categorytitle">Tags</a>
+            <a class="categorytitle">Categories</a>
                 <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-                    <option value="">Select Tag:</option>
-                    <option value="{{route('thread.index')}}"><span class="badge">14</span>All Threads</option>
-                    <option value="" class="list-group-item"><span class="badge">2</span>PHP</option>
-                    <option value="" class="list-group-item"><span class="badge">1</span>Python</option>
+                <option value="">Select:</option>
+                    <option value="{{route('thread.index')}}">All Threads</option>
+                @foreach($categories as $category)
+                    <option value="{{route('thread.index',['categories'=>$category->id])}}">{{$category->name}}</option>
+                @endforeach
                 </select>
                 </div>
                 </div><br>
@@ -30,12 +31,12 @@
                            value="{{$thread->subject}}">
                 </div>
 
-                <div class="box">
-                <label for="subject">Tags</label>
-                <select placeholder="Input..." value="{{old('type')}}">
-                        <option value="1">one</option>
-                        <option value="1">one</option>
-                        <option value="1">one</option>
+                <div class="form-group">
+                <label for="category">Categories</label>
+                <select class="form-control" name="categories[]" multiple id="category">
+                        @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
                     </select>
                 </div><br>
 
