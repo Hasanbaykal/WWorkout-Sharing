@@ -5,7 +5,7 @@
 <div class="container categorycont">
 
         <div class="row">
-        {{{--//category section--}}
+        {{--//category section--}}
             <div class="box col-md-3">
             <div class="list-group">
             <a class="categorytitle">Categories</a>
@@ -32,8 +32,9 @@
                 </div>
 
                 <div class="form-group">
-                <label for="category">Categories</label>
-                <select class="form-control" name="categories[]" multiple id="category">
+                <label for="category_id">Categories</label>
+                <select class="form-control" name="category_id">
+                        <option value="">Select:</option>
                         @foreach($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach

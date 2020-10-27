@@ -10,6 +10,6 @@ class Category extends Model
 
     public function threads()
     {
-        return $this->belongsToMany(Thread::class);
+        return $this->hasMany(Thread::class);
     }
 }

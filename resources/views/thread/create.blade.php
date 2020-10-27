@@ -38,8 +38,9 @@
                 </div>
 
                 <div class="form-group">
-                <label for="category">Categories</label>
-                <select class="form-control" name="categories[]" multiple id="category">
+                <label for="category_id">Categories</label>
+                <select class="form-control" name="category_id">
+                        <option value="">Select:</option>
                         @foreach($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
@@ -145,11 +146,3 @@
 }
 
 </style>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/standalone/selectize.min.js"></script>
-
-    <script>
-        $(function () {
-            $('#category').selectize();
-        })
-    </script>

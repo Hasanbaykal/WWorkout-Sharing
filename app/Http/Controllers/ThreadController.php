@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers;
 use App\Category;
 use App\Thread;
 use Illuminate\Http\Request;
@@ -35,7 +36,8 @@ class ThreadController extends Controller
      */
     public function create()
     {
-        return view('thread.create');
+        $categories = Category::all();
+        return view('thread.create')->withCategories($categories);
     }
 
     /**
@@ -48,9 +50,9 @@ class ThreadController extends Controller
     {
         //validate
         $this->validate($request, [
-            'subject' => 'required|min:5',
-            'type'    => 'required',
-            'thread'  => 'required|min:10',
+            'subject'       => 'required|min:5',
+            'category_id'   => 'required|integer',
+            'thread'        => 'required|min:10',
             //'g-recaptcha-response' => 'required|captcha'
         ]);
 
@@ -102,7 +104,7 @@ class ThreadController extends Controller
         //validate
         $this->validate($request, [
             'subject' => 'required|min:5',
-            'type'    => 'required',
+            'category_id'    => 'required',
             'thread'  => 'required|min:10',
         ]);
 
@@ -128,5 +130,12 @@ class ThreadController extends Controller
         $thread->delete();
 
         return redirect()->route('thread.index')->with('message', 'Threat Deleted');
+    }
+
+    public function productsCreate() {
+        $categories = Categories::get();
+        return View::make('thread.create', [
+            'categories' => $categories
+        ]);
     }
 }

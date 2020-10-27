@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class Thread extends Model
 {
-    protected $guarded=[];
+    protected $guarded=[''];
 
     public function user()
     {
