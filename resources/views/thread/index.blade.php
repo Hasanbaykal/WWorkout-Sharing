@@ -9,12 +9,12 @@
     <div class="container categorycont">
 
     <div class="row">
-            <div class="row content-heading">
-                
-                
-            </div>
-        </div>
-        <div class="row">
+    
+            <form class="example" type="get" action="{{url('/search')}}">
+                <input type="text" name="query" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            
         <div class="col-md-9 createthread">
                     <div class="row">      
                         <div class="col-md-offset-6 col-md-2">
@@ -25,6 +25,7 @@
                 {{--//category section--}}
             <div class="box col-md-3">
             <div class="list-group">
+
             <a class="categorytitle">Categories</a>
                 <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                 <option value="">Select:</option>
@@ -129,6 +130,34 @@
 
 .box select option {
   padding: 30px;
+}
+
+/* Style the search field */
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  
+}
+
+/* Style the submit button */
+form.example button {
+  background: white;
+  color: white;
+  border: white;
+}
+
+form.example button:hover {
+  background: white;
+}
+
+/* Clear floats */
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 </style>

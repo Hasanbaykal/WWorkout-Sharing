@@ -138,4 +138,15 @@ class ThreadController extends Controller
             'categories' => $categories
         ]);
     }
+
+    public function search()
+    {
+        $search_text = $_GET['query'];
+        $threads = Thread::where('subject','LIKE', '%'.$search_text.'%')->get();
+        $threads = Thread::where('thread','LIKE', '%'.$search_text.'%')->get();
+
+        return view('thread.index', compact('threads'));
+
+
+    }
 }
