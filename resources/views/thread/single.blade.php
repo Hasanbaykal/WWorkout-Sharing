@@ -6,8 +6,8 @@
 
     <div class="row">
             <div class="row content-heading">
-                
-                
+
+
             </div>
         </div>
         <div class="row">
@@ -79,9 +79,9 @@
                             <form action="{{route('comment.update',$comment->id)}}" method="post" role="form">
                                                 {{csrf_field()}}
                                                 {{method_field('put')}}
-                            
+
                             <div class="modal-body">
-                            
+
 
                                     <div class="form-group">
                                         <input type="text" class="form-control" name="body" id="" placeholder="Input..." value="{{$comment->body}}">
@@ -117,9 +117,14 @@
                     <input type="text" class="form-control" name="body" id="" placeholder="Input...">
                 </div>
 
+                    @error('thread_limit')
+                    <p class="text-danger">{{$message}} </p>
+
+                    @enderror
+
                     <button type="submit" class="btn btn-primary">Post Comment</button>
                 </form>
-                
+
             </div>
 
         </div>
